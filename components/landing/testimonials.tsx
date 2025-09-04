@@ -4,8 +4,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { MoveLeft, MoveRight, Star } from "lucide-react";
+import Masonry from "react-masonry-css";
+import { Button } from "../ui/button";
 
-const items = [
+const TestimonialItems = [
+  {
+    name: "Emily Watson",
+    role: "Student",
+    quote:
+      "Tasks on my wallpaper keep me on track like nothing else has. Tasks on my wallpaper keep me on track like nothing else has.",
+    rating: 5,
+  },
   {
     name: "Sarah Chen",
     role: "Product Manager",
@@ -20,40 +29,19 @@ const items = [
       "Beautiful customization without losing productivity. Perfect balance.",
     rating: 4,
   },
-  {
-    name: "Emily Watson",
-    role: "Student",
-    quote: "Tasks on my wallpaper keep me on track like nothing else has.",
-    rating: 5,
-  },
 ];
 
+const breakpointColumnsObj = {
+  default: 3,
+  1024: 2,
+  640: 1,
+};
+
 export function Testimonials() {
-  const [[index, direction], setIndex] = useState<[number, number]>([0, 0]);
-
-  const next = () => setIndex(([i]) => [(i + 1) % items.length, 1]);
-  const prev = () =>
-    setIndex(([i]) => [(i - 1 + items.length) % items.length, -1]);
-
-  const variants = {
-    enter: (dir: number) => ({
-      opacity: 0,
-      x: dir > 0 ? 40 : -40,
-    }),
-    center: {
-      opacity: 1,
-      x: 0,
-    },
-    exit: (dir: number) => ({
-      opacity: 0,
-      x: dir > 0 ? -40 : 40,
-    }),
-  };
-
   return (
     <section
       id="features"
-      className="mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48"
+      className="mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48 space-y-6"
     >
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-2xl font-semibold tracking-tight md:text-3xl text-foreground">
@@ -64,117 +52,42 @@ export function Testimonials() {
         </p>
       </div>
 
-      <div className="relative">
-        <div className="overflow-hidden">
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={index}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.35 }}
-            >
-              <Card className="shadow-lg max-w-2xl mx-auto my-2">
-                <CardContent className="p-2 space-y-4 text-center">
-                  <div className="flex justify-center space-x-1">
-                    {Array.from({ length: items[index].rating }).map((_, j) => (
-                      <Star
-                        key={j}
-                        className="w-5 h-5 fill-primary text-primary"
-                      />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground text-pretty">
-                    "{items[index].quote}"
-                  </p>
-                  <div>
-                    <p className="font-semibold">{items[index].name}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {items[index].role}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="flex gap-2"
+        columnClassName="bg-clip-padding"
+      >
+        {TestimonialItems?.map((item, i) => (
+          <Card className="shadow-lg my-2 p-0" key={`testimonial_${i}`}>
+            <CardContent className="p-6 space-y-2">
+              {/* <div className="flex justify-start space-x-1">
+                {Array.from({ length: item.rating }).map((_, j) => (
+                  <Star key={j} className="w-5 h-5 fill-primary text-primary" />
+                ))}
+              </div> */}
+              <p className="text-muted-foreground text-pretty">
+                "{item.quote}"
+              </p>
+              <div className="flex items-center gap-2">
+                <p className="w-10 aspect-square rounded-full bg-muted flex items-center justify-center text-xl">
+                  {item.role.slice(0, 1)}
+                </p>
+                <div>
+                  <p className="font-semibold">{item.name}</p>
+                  <p className="text-sm text-muted-foreground">{item.role}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </Masonry>
 
-        <div
-          className="group absolute right-0 top-0 cursor-pointer opacity-0 bg-secondary z-10 h-full aspect-square rounded-full flex items-center justify-center hover:opacity-30 transition-opacity"
-          onClick={next}
-        >
-          <MoveRight className="w-12 h-12 fill-primary text-primary group-hover:opacity-100" />
-        </div>
-
-        <div
-          className="absolute left-0 top-0 cursor-pointer opacity-0 bg-secondary z-10 h-full aspect-square rounded-full flex items-center justify-center hover:opacity-30 transition-opacity"
-          onClick={prev}
-        >
-          <MoveLeft className="w-12 h-12 fill-primary text-primary group-hover:opacity-100" />
-        </div>
+      <div className="mt-6 flex items-center justify-center gap-3">
+        <button className="relative px-6 py-3 flex items-center justify-center border border-border rounded-md cursor-pointer">
+          <div className="absolute w-full h-px inset-x-0 -bottom-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+          <p>Share your experience</p>
+        </button>
       </div>
     </section>
-    // <section className="pt-12 ms:pt-20 lg:pt-32">
-    //   <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    //     <div className="text-center">
-    //       <h2 className="text-3xl lg:text-4xl font-bold">What people say</h2>
-    //     </div>
-    //     <div className="relative">
-    //       <div className="overflow-hidden">
-    //         <AnimatePresence mode="wait" custom={direction}>
-    //           <motion.div
-    //             key={index}
-    //             custom={direction}
-    //             variants={variants}
-    //             initial="enter"
-    //             animate="center"
-    //             exit="exit"
-    //             transition={{ duration: 0.35 }}
-    //           >
-    //             <Card className="shadow-lg max-w-2xl mx-auto my-2">
-    //               <CardContent className="p-2 space-y-4 text-center">
-    //                 <div className="flex justify-center space-x-1">
-    //                   {Array.from({ length: items[index].rating }).map(
-    //                     (_, j) => (
-    //                       <Star
-    //                         key={j}
-    //                         className="w-5 h-5 fill-primary text-primary"
-    //                       />
-    //                     )
-    //                   )}
-    //                 </div>
-    //                 <p className="text-muted-foreground text-pretty">
-    //                   "{items[index].quote}"
-    //                 </p>
-    //                 <div>
-    //                   <p className="font-semibold">{items[index].name}</p>
-    //                   <p className="text-sm text-muted-foreground">
-    //                     {items[index].role}
-    //                   </p>
-    //                 </div>
-    //               </CardContent>
-    //             </Card>
-    //           </motion.div>
-    //         </AnimatePresence>
-    //       </div>
-
-    //       <div
-    //         className="group absolute right-0 top-0 cursor-pointer opacity-0 bg-secondary z-10 h-full aspect-square rounded-full flex items-center justify-center hover:opacity-30 transition-opacity"
-    //         onClick={next}
-    //       >
-    //         <MoveRight className="w-12 h-12 fill-primary text-primary group-hover:opacity-100" />
-    //       </div>
-
-    //       <div
-    //         className="absolute left-0 top-0 cursor-pointer opacity-0 bg-secondary z-10 h-full aspect-square rounded-full flex items-center justify-center hover:opacity-30 transition-opacity"
-    //         onClick={prev}
-    //       >
-    //         <MoveLeft className="w-12 h-12 fill-primary text-primary group-hover:opacity-100" />
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>
   );
 }
