@@ -15,9 +15,10 @@ export function About() {
       <blockquote
         className={`${inter.className} text-xl md:text-2xl lg:text-4xl font-semibold leading-snug text-foreground`}
       >
-        WallList puts your tasks where you can&apos;t ignore them—right on your
-        wallpaper. No clutter, no noisy reminders. Just quiet focus on what
-        matters most.
+        <span className="text-accent">WallList</span> puts your tasks where you
+        can&apos;t ignore them—right on your{" "}
+        <span className="text-accent">wallpaper</span>. No clutter, no noisy
+        reminders. Just quiet focus on what matters most.
       </blockquote>
 
       <div className="mt-8 flex gap-2 items-center justify-center">
