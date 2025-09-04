@@ -40,15 +40,16 @@ export function Hero() {
       </div>
 
       <div className="group relative z-10 mx-auto mt-10 w-full max-w-5xl px-8 lg:px-4">
-        <div
-          className="relative mx-auto w-full overflow-hidden rounded-xl border border-border bg-card shadow-sm"
-          aria-label="App preview"
-        >
+        <ScrollReveal delay={120} className="h-full w-full">
           <div
-            className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent from-80% to-background/80 z-20 group-hover:opacity-0 transition-opacity duration-300 ease-in "
-            aria-hidden="true"
-          />
-          <ScrollReveal delay={120} className="h-full w-full">
+            className="relative mx-auto w-full overflow-hidden rounded-xl border border-border bg-card shadow-sm"
+            aria-label="App preview"
+          >
+            <div
+              className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent from-80% to-background/80 z-20 group-hover:opacity-0 transition-opacity duration-300 ease-in "
+              aria-hidden="true"
+            />
+
             <Image
               src="/smartphone-mockup-showing-wallpaper-with-task-list.png"
               alt="Walllist app preview on smartphone wallpaper"
@@ -57,8 +58,8 @@ export function Hero() {
               className="w-full aspect-video rounded-t-xl object-cover"
               priority
             />
-          </ScrollReveal>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
