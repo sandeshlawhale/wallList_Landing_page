@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Smartphone, Palette, Bell, Sparkles, Star, Download, Play } from "lucide-react"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 export default function WalllistLanding() {
   return (
@@ -142,21 +143,24 @@ export default function WalllistLanding() {
               Explore different styles and see how your tasks can look on various wallpapers.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div
-                key={i}
-                className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group"
-              >
-                <img
-                  src={`/wallpaper-style-.png?height=400&width=225&query=wallpaper style ${i} with task overlay`}
-                  alt={`Wallpaper style ${i}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            ))}
-          </div>
+          <ScrollArea className="w-full whitespace-nowrap rounded-2xl border border-border bg-card">
+            <div className="flex w-max gap-4 p-4">
+              {[...Array(10)].map((_, i) => (
+                <div
+                  key={i}
+                  className="relative h-[400px] w-[225px] shrink-0 overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02]"
+                >
+                  <img
+                    src={`/wallpaper-style-.png?key=aypmj&height=400&width=225&query=wallpaper style ${i + 1} with task overlay`}
+                    alt={`Wallpaper style ${i + 1}`}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
+                </div>
+              ))}
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
         </div>
       </section>
 
