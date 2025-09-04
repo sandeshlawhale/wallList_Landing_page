@@ -1,121 +1,106 @@
 "use client";
 
-import * as React from "react";
-import { motion } from "framer-motion";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-type Screenshot = {
-  id: number;
-  src: string;
-  title: string;
-  description: string;
-};
+const screenshots = [
+  {
+    src: "/minimal-wallpaper-style-1.png",
+    span: "lg:col-span-2 lg:row-span-2",
+  },
+  {
+    src: "/minimal-wallpaper-style-1.png",
+    span: "lg:col-span-1 lg:row-span-2",
+  },
+  {
+    src: "/minimal-wallpaper-style-2.png",
+    span: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    src: "/minimal-wallpaper-style-2.png",
+    span: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    src: "/minimal-wallpaper-style-2.png",
+    span: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    src: "/minimal-wallpaper-style-3.png",
+    span: "lg:col-span-1 lg:row-span-2",
+  },
+  {
+    src: "/minimal-wallpaper-style-4.png",
+    span: "lg:col-span-2 lg:row-span-2",
+  },
+  {
+    src: "/minimal-wallpaper-style-5.png",
+    span: "lg:col-span-2 lg:row-span-1",
+  },
+];
 
-interface BentoGalleryProps {
-  featured: Screenshot[]; // main storytelling flow (4–6)
-  all: Screenshot[]; // extra screenshots (accordion)
-}
-
-export default function BentoGallery({ featured, all }: BentoGalleryProps) {
-  const [expanded, setExpanded] = React.useState(false);
-  const [selected, setSelected] = React.useState<Screenshot | null>(null);
+const BentoGallery = () => {
+  const [showExpanded, setShowExpanded] = useState(false);
 
   return (
-    <section className="w-full py-16">
-      <h2 className="text-center text-3xl font-bold mb-10 text-foreground">
-        See WallList in Action
-      </h2>
-
-      {/* Bento Grid */}
-      <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-        {featured.map((shot) => (
-          <motion.div
-            key={shot.id}
-            className="relative rounded-2xl overflow-hidden shadow-md border bg-card cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-            onClick={() => setSelected(shot)}
+    <section
+      id="gallery"
+      className="mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48 space-y-8"
+    >
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl text-foreground">
+          What You&apos;ll Experience
+        </h2>
+        <p className="mt-3 text-muted-foreground">
+          Take a look inside WallList — every feature designed to help you stay
+          focused and organized.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] gap-4 max-w-5xl mx-auto">
+        {screenshots.slice(0, 4).map((shot, i) => (
+          <div
+            className={`bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center ${shot.span}`}
+            key={`first_${i}`}
           >
             <img
               src={shot.src}
-              alt={shot.title}
-              className="w-full h-full object-cover"
+              alt={`screenshot-${i}`}
+              className="w-full h-full object-cover rounded-xl"
             />
-            <div className="absolute bottom-0 w-full bg-gradient-to-t from-background/90 to-transparent p-4">
-              <p className="text-sm font-medium text-foreground">
-                {shot.title}
-              </p>
-            </div>
-          </motion.div>
+          </div>
         ))}
-      </div>
-
-      {/* Accordion Button */}
-      <div className="flex justify-center mt-8">
-        <Button
-          variant="outline"
-          onClick={() => setExpanded(!expanded)}
-          className="rounded-xl"
-        >
-          {expanded ? "Hide images ↑" : "See all images ↓"}
-        </Button>
-      </div>
-
-      {/* Accordion Content */}
-      {expanded && (
-        <motion.div
-          className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto mt-8"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          transition={{ duration: 0.4 }}
-        >
-          {all.map((shot) => (
-            <motion.div
-              key={shot.id}
-              className="relative rounded-xl overflow-hidden shadow-md border bg-card cursor-pointer"
-              whileHover={{ scale: 1.02 }}
-              onClick={() => setSelected(shot)}
-            >
-              <img
-                src={shot.src}
-                alt={shot.title}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
-
-      {/* Lightbox Dialog */}
-      <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
-        <DialogContent className="max-w-3xl bg-card text-card-foreground p-6 rounded-2xl">
-          {selected && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-xl font-semibold">
-                  {selected.title}
-                </DialogTitle>
-                <DialogDescription className="text-muted-foreground">
-                  {selected.description}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="mt-4">
+        <AnimatePresence>
+          {showExpanded &&
+            screenshots.slice(4).map((shot, i) => (
+              <motion.div
+                layout
+                key={`last_${i}`}
+                initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 30 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className={`bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center ${shot.span}`}
+              >
                 <img
-                  src={selected.src}
-                  alt={selected.title}
-                  className="rounded-lg border shadow-sm w-full h-auto"
+                  src={shot.src}
+                  alt={`screenshot-${i}`}
+                  className="w-full h-full object-cover rounded-xl"
                 />
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
+              </motion.div>
+            ))}
+        </AnimatePresence>
+
+        <div
+          key="bento-btn"
+          className="bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center cursor-pointer hover:bg-accent/10 transition lg:col-span-1 lg:row-span-1 border border-border"
+          onClick={() => setShowExpanded(!showExpanded)}
+        >
+          <span className="text-foreground font-medium">
+            {showExpanded ? "Show Less ▲" : "Show More ▼"}
+          </span>
+        </div>
+      </div>
     </section>
   );
-}
+};
+
+export default BentoGallery;

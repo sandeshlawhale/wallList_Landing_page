@@ -1,45 +1,33 @@
 "use client";
 
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import {
-  CheckCircle2,
-  Sparkles,
-  Paintbrush,
-  BellRing,
-  Smartphone,
-  ListTodo,
-} from "lucide-react";
+import { CheckSquare, Smartphone, Tag, Layers, BellOff } from "lucide-react";
 
 const features = [
   {
-    icon: CheckCircle2,
-    title: "Focused Productivity",
-    body: "Keep your top tasks on your wallpaper so they never get lost in tabs.",
-  },
-  {
-    icon: Paintbrush,
-    title: "Beautifully Minimal",
-    body: "Clean, calm layouts that feel at home on any phone or desktop.",
-  },
-  {
-    icon: Sparkles,
-    title: "Smart Priorities",
-    body: "AI (coming soon) helps you pick what matters most each day.",
-  },
-  {
-    icon: BellRing,
-    title: "Gentle Reminders",
-    body: "Stay on track with helpful nudges—never noisy, always timely.",
-  },
-  {
     icon: Smartphone,
-    title: "Home Screen Ready",
-    body: "Your tasks live where you look most: on your wallpaper.",
+    title: "Wallpaper Integration",
+    body: "Set todos on both your home screen and lock screen wallpapers.",
   },
   {
-    icon: ListTodo,
-    title: "Simple Tasking",
-    body: "Fast capture and reordering with zero friction.",
+    icon: CheckSquare,
+    title: "Todos & Sub-Todos",
+    body: "Break down big tasks into smaller steps to stay organized.",
+  },
+  {
+    icon: Tag,
+    title: "Daily & Important Tags",
+    body: "Highlight daily routines and mark important tasks with ease.",
+  },
+  {
+    icon: Layers,
+    title: "Labels for Clarity",
+    body: "Group and categorize your todos with labels for better focus.",
+  },
+  {
+    icon: BellOff,
+    title: "Minimal & Silent",
+    body: "Stay productive with clean layouts and zero notifications.",
   },
 ];
 
@@ -59,9 +47,15 @@ export function Features() {
         </p>
       </div>
 
-      <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {features.map((f) => (
-          <li key={f.title} className="list-none">
+      <div className="mt-8 flex flex-wrap justify-center gap-6">
+        {features.map((f, i) => (
+          <div
+            key={f.title}
+            className={`flex-1 max-w-[300px] min-w-[220px]`}
+            style={{
+              flexBasis: i < 3 ? "30%" : "40%", // first row smaller to fit 3, second row bigger to center 2
+            }}
+          >
             <div className="relative h-full rounded-2xl border border-border md:rounded-3xl p-2 bg-background">
               <GlowingEffect
                 spread={40}
@@ -80,9 +74,9 @@ export function Features() {
                 </div>
               </div>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
