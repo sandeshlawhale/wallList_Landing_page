@@ -4,6 +4,7 @@ import { Testimonials } from "@/components/landing/testimonials";
 import { FinalCTA } from "@/components/landing/final-cta";
 import { About } from "@/components/landing/about";
 import BentoGallery from "@/components/landing/BentoGallery";
+import FAQ from "@/components/landing/faq";
 
 export default function WalllistLanding() {
   return (
@@ -13,6 +14,7 @@ export default function WalllistLanding() {
       <Features />
       <BentoGallery />
       <Testimonials />
+      <FAQ />
       <FinalCTA />
     </div>
   );
