@@ -18,7 +18,7 @@ const FooterLinks = [
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-border/80">
+    <footer id="footer" className="border-t border-border/80">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 py-4 text-sm text-muted-foreground md:flex-row">
         <Logo />
         <p className="order-3 md:order-none">

@@ -41,7 +41,13 @@ export function Navbar() {
             </Link>
           ))}
           <Button asChild variant={"secondary"} className="ml-2 -mr-2">
-            <a href="/download">Download</a>
+            <a
+              href="/download"
+              className="text-foreground"
+              style={{ textShadow: "1px 2px 2px rgba(0,0,0,0.3)" }}
+            >
+              Download
+            </a>
           </Button>
           <ModeToggle />
         </nav>
