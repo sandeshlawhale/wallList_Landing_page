@@ -10,8 +10,8 @@ export default function WalllistLanding() {
     <div className="min-h-screen bg-background">
       <Hero />
       <About />
-      <BentoGallery />
       <Features />
+      <BentoGallery />
       <Testimonials />
       <FinalCTA />
     </div>

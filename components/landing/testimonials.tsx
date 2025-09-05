@@ -83,7 +83,7 @@ export function Testimonials() {
       </Masonry>
 
       <div className="mt-6 flex items-center justify-center gap-3">
-        <button className="relative px-6 py-3 flex items-center justify-center border border-border rounded-md cursor-pointer">
+        <button className="relative px-6 py-3 flex items-center justify-center border border-border rounded-md cursor-pointer shadow-lg">
           <div className="absolute w-full h-px inset-x-0 -bottom-px bg-gradient-to-r from-transparent via-accent to-transparent" />
           <p>Share your experience</p>
         </button>

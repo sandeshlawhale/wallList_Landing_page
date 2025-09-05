@@ -6,11 +6,11 @@ export function FinalCTA() {
   return (
     <section
       id="download"
-      className="mx-auto max-w-5xl px-4 py-16 md:py-20 lg:py-32 text-center"
+      className="mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48 pb-8 md:pb-14 lg:pb-20 text-center"
       aria-label="Final Call to Action"
     >
       <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl">
-        <div className="bg-gradient-to-r from-primary/80 to-primary/40 px-6 py-16 text-primary-foreground md:px-12">
+        <div className="bg-gradient-to-r from-accent/80 to-accent/40 px-6 py-16 text-primary-foreground md:px-12">
           <ScrollReveal>
             <h2 className="text-pretty text-2xl font-semibold tracking-tight md:text-4xl w-3/4 mx-auto">
               Ready to put your tasks where they actually get done?

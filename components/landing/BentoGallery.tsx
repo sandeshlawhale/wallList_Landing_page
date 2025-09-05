@@ -58,7 +58,7 @@ const BentoGallery = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] gap-4 max-w-5xl mx-auto">
         {screenshots.slice(0, 4).map((shot, i) => (
           <div
-            className={`bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center ${shot.span}`}
+            className={`bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center ${shot.span} shadow-lg`}
             key={`first_${i}`}
           >
             <img
@@ -78,7 +78,7 @@ const BentoGallery = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 30 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className={`bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center ${shot.span}`}
+                className={`bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center ${shot.span} shadow-lg`}
               >
                 <img
                   src={shot.src}
@@ -91,7 +91,7 @@ const BentoGallery = () => {
 
         <div
           key="bento-btn"
-          className="bg-card rounded-2xl shadow overflow-hidden flex items-center justify-center cursor-pointer hover:bg-accent/10 transition lg:col-span-1 lg:row-span-1 border border-border"
+          className="bg-card rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer hover:bg-accent/10 transition lg:col-span-1 lg:row-span-1 border border-border shadow-md"
           onClick={() => setShowExpanded(!showExpanded)}
         >
           <span className="text-foreground font-medium">

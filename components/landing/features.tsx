@@ -53,17 +53,17 @@ export function Features() {
             key={f.title}
             className={`flex-1 max-w-[300px] min-w-[220px]`}
             style={{
-              flexBasis: i < 3 ? "30%" : "40%", // first row smaller to fit 3, second row bigger to center 2
+              flexBasis: i < 3 ? "30%" : "40%",
             }}
           >
-            <div className="relative h-full rounded-2xl border border-border md:rounded-3xl p-2 bg-background">
-              <GlowingEffect
+            <div className="relative h-full rounded-2xl border border-border md:rounded-3xl p-2 bg-background shadow-lg">
+              {/* <GlowingEffect
                 spread={40}
                 glow={true}
                 disabled={false}
                 proximity={64}
                 inactiveZone={0.01}
-              />
+              /> */}
               <div className="relative flex h-full flex-col gap-4 rounded-xl bg-background p-6 md:p-8 shadow-sm">
                 <f.icon className="h-6 w-6 text-muted-foreground" />
                 <div>

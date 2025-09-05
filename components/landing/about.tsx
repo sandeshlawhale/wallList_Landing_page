@@ -10,7 +10,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative mx-auto max-w-5xl px-4 pt-8 md:pt-20 lg:pt-32 text-center"
+      className="relative mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48 text-center"
     >
       <blockquote
         className={`${inter.className} text-xl md:text-2xl lg:text-4xl font-semibold leading-snug text-foreground`}
