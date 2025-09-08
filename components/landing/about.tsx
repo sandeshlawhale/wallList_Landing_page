@@ -8,10 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export function About() {
   return (
-    <section
-      id="about"
-      className="relative mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48 text-center"
-    >
+    <section id="about" className="relative mx-auto max-w-5xl px-4 text-center">
       <blockquote
         className={`${inter.className} text-xl md:text-2xl lg:text-4xl font-semibold leading-snug text-foreground`}
       >

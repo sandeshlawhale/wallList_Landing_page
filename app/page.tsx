@@ -8,7 +8,7 @@ import FAQ from "@/components/landing/faq";
 
 export default function WalllistLanding() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background my-12 md:my-8 lg:my-16 space-y-20 md:space-y-32 lg:space-y-48">
       <Hero />
       <About />
       <Features />

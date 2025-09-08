@@ -39,10 +39,7 @@ const breakpointColumnsObj = {
 
 export function Testimonials() {
   return (
-    <section
-      id="features"
-      className="mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48 space-y-6"
-    >
+    <section id="features" className="mx-auto max-w-5xl px-4 space-y-6">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-2xl font-semibold tracking-tight md:text-3xl text-foreground">
           What people say

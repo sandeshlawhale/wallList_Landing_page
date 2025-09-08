@@ -6,7 +6,7 @@ export function FinalCTA() {
   return (
     <section
       id="download"
-      className="mx-auto max-w-5xl px-4 pt-20 md:pt-32 lg:pt-48 pb-8 md:pb-14 lg:pb-20 text-center"
+      className="mx-auto max-w-5xl px-4 text-center"
       aria-label="Final Call to Action"
     >
       <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl">
