@@ -3,15 +3,11 @@ import { Logo } from "../common/logo";
 
 const FooterLinks = [
   {
-    href: "#",
-    label: "Support",
-  },
-  {
     href: "/privacy",
     label: "Privacy",
   },
   {
-    href: "#",
+    href: "/terms",
     label: "Terms",
   },
 ];
