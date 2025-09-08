@@ -32,8 +32,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
-          <Footer />
+          <div className="flex flex-col min-h-[calc(100dvh-4rem)]">
+            {children}
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -40,7 +40,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative w-full py-20 bg-background">
+    <section className="flex-1 relative w-full py-20 bg-background">
       <div className="container mx-auto px-4 md:px-8 max-w-xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
