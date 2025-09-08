@@ -130,4 +130,36 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .legal-heading {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  .legal-subheading {
+    @apply text-2xl text-foreground/90 font-bold mb-2;
+  }
+
+  .legal-title {
+    @apply text-xl text-foreground font-bold mb-2;
+  }
+
+  .legal-subtitle {
+    @apply text-lg text-muted-foreground font-bold;
+  }
+
+  .legal-para {
+    @apply text-base text-foreground mb-4;
+  }
+
+  .legal-para-muted {
+    @apply text-sm text-muted-foreground mb-6;
+  }
+
+  .legal-list li {
+    @apply mb-2 list-disc ml-8;
+  }
+
+  .legal-list {
+    @apply mb-8;
+  }
 }
