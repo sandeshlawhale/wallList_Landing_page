@@ -7,7 +7,7 @@ const FooterLinks = [
     label: "Support",
   },
   {
-    href: "#",
+    href: "/privacy",
     label: "Privacy",
   },
   {
